@@ -4,12 +4,19 @@
 
 Welcome to the SportGoods E-Commerce Website repository! This project is an online platform designed to make buying and selling sports equipment a breeze. Whether you're an athlete, sports enthusiast, or simply looking for high-quality sports gear, SportGoods has got you covered.
 
+###Image
 ![Screenshot of SportGoods Website](images/image.png)
+###Image 
 ![Screenshot of SportGoods Website](images/image1.png)
+###Image
 ![Screenshot of SportGoods Website](images/image2.png)
+###Image
 ![Screenshot of SportGoods Website](images/image3.png)
+###Image
 ![Screenshot of SportGoods Website](images/image4.png)
+###Image
 ![Screenshot of SportGoods Website](images/image5.png)
+###Image
 ![Screenshot of SportGoods Website](images/image6.png)
 
 ## Table of Contents
