@@ -6,17 +6,17 @@ Welcome to the SportGoods E-Commerce Website repository! This project is an onli
 
 ### Image
 ![Screenshot of SportGoods Website](images/image.png)
-##Image 
+### Image 
 ![Screenshot of SportGoods Website](images/image1.png)
-##Image
+### Image
 ![Screenshot of SportGoods Website](images/image2.png)
-##Image
+### Image
 ![Screenshot of SportGoods Website](images/image3.png)
-##Image
+### Image
 ![Screenshot of SportGoods Website](images/image4.png)
-##Image
+### Image
 ![Screenshot of SportGoods Website](images/image5.png)
-##Image
+### Image
 ![Screenshot of SportGoods Website](images/image6.png)
 
 ## Table of Contents
