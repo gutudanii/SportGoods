@@ -4,6 +4,12 @@
 
 Welcome to the SportGoods E-Commerce Website repository! This project is an online platform designed to make buying and selling sports equipment a breeze. Whether you're an athlete, sports enthusiast, or simply looking for high-quality sports gear, SportGoods has got you covered.
 
+![Screenshot of SportGoods Website](link_to_screenshot.png)
+![Screenshot of SportGoods Website](link_to_screenshot.png)
+![Screenshot of SportGoods Website](link_to_screenshot.png)
+![Screenshot of SportGoods Website](link_to_screenshot.png)
+![Screenshot of SportGoods Website](link_to_screenshot.png)
+
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -14,6 +20,7 @@ Welcome to the SportGoods E-Commerce Website repository! This project is an onli
 - [Project Planning](#project-planning)
 - [Backend Development](#backend-development)
 - [Frontend Development](#frontend-development)
+- [Admin Dashboard](#admin-dashboard)
 - [Advanced Features](#advanced-features)
 - [Testing and Deployment](#testing-and-deployment)
 - [Contact Information](#contact-information)
@@ -27,7 +34,7 @@ Hello, everyone! I am Gutu Daniel, and I'm thrilled to present my project: a spo
 
 ## Project Overview
 
-The main goal of my e-commerce website is to provide a user-friendly platform for customers to explore and purchase sports goods. Whether you need balls, sport pants, or any other sports equipment, SportGoods has you covered. 
+The main goal of my e-commerce website is to provide a user-friendly platform for customers to explore and purchase sports goods. Whether you need balls, sport pants, or any other sports equipment, SportGoods has you covered.
 
 ## Core Features
 
@@ -64,6 +71,12 @@ On the backend, I have set up my Spring Boot application to handle API endpoints
 ## Frontend Development
 
 Thymeleaf has been my choice for the frontend, ensuring a dynamic and interactive user interface. I've developed pages for product listing, details, shopping cart, checkout, and user registration/login.
+
+## Admin Dashboard
+
+As an admin, I've also developed a feature-rich dashboard for controlling various aspects of the website, including adding new products, managing user accounts, and more. Here's a sneak peek:
+
+![Screenshot of Admin Dashboard](link_to_admin_dashboard_screenshot.png)
 
 ## Advanced Features
 
