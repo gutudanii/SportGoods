@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <form class="login-form" th:action="@{/users/signup}" method="post" th:object="${user}">
+        <h1>
+            Sign Up</h1>
+        <input type="text" th:field="*{username}" name="username" placeholder="Username" required>
+        <input type="email" th:field="*{emailAddress}" name="email" placeholder="Email" required>
+        <input type="password"  th:field="*{password}" name="password" placeholder="Password" required>
+        <input type="password" name="password-repeat" placeholder="Repeat Password" required>
+        <input type="text" th:field="*{fullName}" name="full-name" placeholder="Full Name" required>
+        <div class="form-actions">
+            <button type="submit">Sign Up</button>
+        </div>
+        <br>
+        <!-- Add this in your create.html template -->
+        <div th:if="${param.error}" id="danger" class="alert">
+            <p th:text="${errorMessage}"></p>
+        </div>
+        <div th:if="${param.pr}" id="danger" class="alert">
+            <p th:text="${pr}"></p>
+        </div>
+        <a th:href="@{/users/login}" style=" margin-left: 40%; text-decoration: underline; color: darkblue;" class="sign-up">Back to Login</a>
+    </form>
+</div>
+</body>
+</html>

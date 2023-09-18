@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="logo1.ico">
+  <!-- <link rel="stylesheet" href="contact1.css"> -->
+  <title>Contact</title>
+  <style>
+
+.back{
+    text-decoration: none;
+    margin: 50px;
+    margin-top: 30px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 30px 3px 3px 10px;
+    background-color: rgb(8, 14, 68);
+    color: white;
+    }
+
+.whole_main {
+    display: inline-flex;
+    margin-top: 0px;
+    margin-left: 150px;
+    box-shadow: 2px 2px 100px silver;
+}
+
+.left_box{
+    height: 500px;
+    width: 400px;
+    background-color: rgb(8, 14, 68);
+}
+
+.right_form{
+    height: 500px;
+    width: 650px;
+    background-color: white;
+}
+
+.head_contact{
+    color:rgb(248, 193, 12);
+    font-weight: 0;
+    font-size: 29px;
+    padding-top: 30px;
+    font-family:monospace;
+}
+.head_contacts{
+    color:rgb(0, 0, 0);
+    font-weight: 0;
+    font-size: 32px;
+    letter-spacing: 2px;
+    padding-top: 5px;
+    margin-left: 20px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.cont_cont{
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    padding: 5px;
+    margin-left: 30px;
+    /* font-family:Arial, Helvetica, sans-serif; */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.left_box ul {
+    list-style: none;
+}
+
+.left_box ul li{
+    margin: 20px;
+}
+
+.nv{
+    display: inline-flex;
+}
+.logo{
+    width: 100px;
+    height: 100px;
+    border-radius: 0%;
+    margin: 10px;
+    margin-left: 50px;
+    margin-right: 1000px;
+}
+
+.form{
+    margin: 10px;
+    margin-left: 17px;
+    display:grid ;
+}
+
+.form label {
+    margin: 15px;
+    margin-left: 0px;
+    padding-bottom: 2px;
+    font-weight: bolder;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+}
+
+.form input, textarea {
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    font-weight: 0;
+    border-width: 1px;
+    border-color: silver;
+}
+
+.form button{
+    margin-top: 17px;
+    width: 130px;
+    padding: 8px;
+    background-color:rgb(8, 14, 68);
+    color: white;
+    font-size: 12px;
+    margin-left: 460px;
+    border-radius: 10px;
+}
+.notificationN{
+    position: fixed;
+    margin-top: 0px;
+    margin-left: 35%;
+    font-size: 15px;
+    font-weight: bolder;
+    background-color: darkgreen;
+    color: #fff;
+    padding: 0px 70px 0px 70px;
+    border-radius: 10px;
+  }
+    </style>
+</head>
+<body>
+<div th:if=${message} class="notificationN">
+  <p align="center">Your Notification is successfully submitted</p>
+</div>
+<div class="nv">
+  <a href="/"><img class="logo" th:src="@{/imagee/sports.png}" alt=""> </a>
+  <a class="back" href="/">Back</a>
+</div>
+<br>
+<div class="whole_main">
+  <div class="left_box">
+    <h1 align="center" class="head_contact">Let's get in touch</h1>
+    <p  class="cont_cont">We are open for any suggestion, just chat or have question ? </p>
+    <ul>
+      <li><img width="30px" height="30px" src="https://i.pinimg.com/originals/55/35/24/553524fb69744a9d82b3b79960d54858.jpg" alt=""> <big style="color:rgb(248, 193, 12); font-family: cursive;">Address:</big>
+        <big style="color: rgb(255, 255, 255);  font-size: 16px;"> Addis Ababa, Ethiopia </big></li>
+      <li><img width="30px" height="30px" src="https://i.pinimg.com/474x/e1/81/b7/e181b7cb6dec98c4d8efb94cfa77471c.jpg" alt=""> <big style="color:rgb(248, 193, 12);  font-family: cursive;">Phone:</big>
+        <big style="color: white; font-size: 16px;"> +251 _ _ _ _ _ </big> </li>
+      <li><img width="30px" height="30px" src="https://media.istockphoto.com/id/1161114191/vector/email-icon-on-black-background-black-flat-style-vector-illustration.jpg?s=170667a&w=0&k=20&c=yqkkhkJaMdWID8oq5FGVwu7ynlJmwHfPoGz7c714loc="
+               alt=""> <big style="color:rgb(248, 193, 12);  font-family: cursive;">Email:</big>
+        <big style="color: white;  font-size: 16px;"> example@gmail.com </big> </li>
+      <li><img width="30px" height="30px" src="https://png.pngtree.com/png-vector/20190319/ourmid/pngtree-vector-web-icon-png-image_847779.jpg"
+               alt=""><big style="color:rgb(248, 193, 12);  font-family: cursive;"> Website:</big>
+        <big style="color: white;  font-size: 16px;"> www.gutu.tech</big></li>
+    </ul>
+  </div>
+  <div class="right_form">
+    <h1 align="left" class="head_contacts">Let's Go</h1>
+    <form th:action="@{/save/contact}" th:object="${notification}" class="form" method="post">
+      <label>FULL NAME</label>
+      <!-- <br> -->
+      <input type="text" th:field="*{fullName}" placeholder="Name" name="name" id="">
+      <!-- <br> -->
+      <label>EMAIL</label>
+      <!-- <br> -->
+      <input type="email" th:field="*{email}" placeholder="Email" name="email" id="">
+      <!-- <br> -->
+      <label>SUBJECT</label>
+      <!-- <br> -->
+      <input type="text" th:field="*{subject}" placeholder="Subject" name="subject" id="">
+      <!-- <br> -->
+      <label for="">MESSAGE</label>
+      <!-- <br> -->
+      <textarea name="message"  th:field="*{message}" placeholder="Message" id="" cols="30" rows="7"></textarea>
+      <!-- <br> -->
+      <button type="submit">Send</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

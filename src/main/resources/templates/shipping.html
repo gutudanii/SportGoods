@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Cart Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .cart-section {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .cart-header h2 {
+            margin: 0;
+        }
+        .cart-status {
+            font-size: 18px;
+            color: #555;
+        }
+        .cart-items {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .cart-item {
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 10px;
+            width: calc(33.33% - 20px);
+            text-align: center;
+            border-radius: 3px;
+            width: 45%;
+        }
+        .cart-item img {
+            width: 30%;
+            height: 250px;
+            margin-bottom: 10px;
+        }
+        .cart-item p {
+            margin: 0;
+        }
+        .cart-item .order-details {
+            font-size: 14px;
+            color: #777;
+            margin-top: 5px;
+        }
+    </style>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #1c2b46;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .search-input {
+      padding: 8px;
+      width: 250px;
+      font-size: 12px;
+      height: 5px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      flex: 1;
+    }
+
+    .search-icon {
+      color: #ffffff;
+      margin-left: -36px;
+      font-size: 13px;
+      background-color: #858080;
+      padding: 7px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .product {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      flex: 0 0 250px;
+    }
+
+    .product img {
+      max-width: 100%;
+      border-radius: 5px;
+    }
+
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+    }
+
+          .price-all-list {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-weight: bolder;
+            margin: 0;
+        }
+
+        .complete-payment {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .complete-payment:hover {
+            background-color: #555;
+        }
+
+    .product-name {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .product-price {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .old-price {
+      font-size: 14px;
+      color: #777;
+      text-decoration: line-through;
+    }
+
+    .product-discount {
+      font-size: 14px;
+      font-weight: 500;
+      color: #777;
+    }
+
+    .add-to-cart-btn {
+      padding: 8px 16px;
+      background-color: #2f2d52;
+      color: #fff;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.7s;
+    }
+
+    .add-to-cart-btn:hover {
+      background-color: #1c2b46;
+    }
+
+    .cta1 {
+      display: inline-flex;
+      gap: 10px;
+      align-items:center
+    }
+        .cta {
+      display: inline-flex;
+      gap: 10px;
+    }
+        .profile {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .profile-icon {
+            font-size: 24px;
+            color: #fff;
+        }
+
+        .profile-username {
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .profile-dropdown {
+            display: none; /* Initially hidden */
+            grid-template-columns: 1fr;
+            gap: 10px;
+            position: absolute;
+            top: 50px; /* Adjust this value for desired position */
+            right: 10px; /* Adjust this value for desired position */
+            background-color: #1b223a;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-dropdown a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+        }
+
+        .profile-dropdown a:hover {
+            background-color: #242647;
+        }
+
+    @media screen and (max-width: 768px) {
+      .cta {
+/* <!--        display: none;--> */
+      }
+    }
+    .cta1 a {
+      padding: 4px 12px;
+      background-color: #1b223a;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 15px;
+      transition: background-color 0.3s;
+    }
+
+    .cta1 a:hover {
+      background-color: #242647;
+    }
+    .alert{
+        padding: 1px;
+        background-color: lightgreen;
+        color: white;
+    }
+    .alert p{
+        margin-left: 10px;
+        font-size: 15px;
+        text-align: center;
+      }
+    .alert a{
+      margin-right: 5px;
+      font-size: 18px;
+      color: darkred;
+      text-decoration: none;
+      border-radius: 50px;
+    }
+    .paymentBox{
+      width: 50%;
+      height: 500px;
+      background-color: white;
+      box-shadow: 2px 3px 200px black;
+      border-radius: 10px;
+      position:fixed;
+      align-items: center;
+      align-self: center;
+      margin-left: 25%;
+      margin-top: 0%;
+      display:none;
+    }
+    .form{
+        margin-left: 20%;
+        border: 2px groove gray;
+        border-radius: 20px;
+        padding: 10%;
+        width: 40%;
+      }
+      .form input{
+        padding: 7px;
+        border-radius: 10px;
+      }
+      @media screen and (max-width: 768px) {
+      .cta {
+        flex-direction: column;
+      }
+    }
+  </style>
+    <style>
+        /* Basic styling for the form */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Style the submit button */
+        .btn-submit {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Add some spacing between sections */
+        .section-divider {
+            margin-top: 20px;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+
+        /* Arrange fields in a two-column layout */
+        .form-columns {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-columns .form-group {
+            width: 48%;
+        }
+    </style>
+</head>
+<body>
+<div id="cls" th:if="${message}" class="alert">
+    <p onclick="closeAlert()" th:text="${message}"></p>
+</div>
+<header>
+    <div><a th:href="@{/}"><img width="80px" th:src="@{/imagee/sports.png}" alt=""></a></div>
+    <div class="search-bar">
+        <input type="text" class="search-input" placeholder="Search for products...">
+        <a href="#"><i class="fas fa-search search-icon"></i></a>
+    </div>
+    <div class="cta">
+        <div class="profile" onclick="toggleProfileDropdown()">
+            <i class="fas fa-user-circle profile-icon"></i>
+            <span th:text="${pr}" class="profile-username"></span>
+        </div>
+    </div>
+    <div id="profileDropdown" class="profile-dropdown">
+        <a th:href="@{/users/carts}">Carts</a>
+        <a th:href="@{/users/profile}">Profile</a>
+        <a th:href="@{/logout}">Logout</a>
+    </div>
+</header>
+<div class="container">
+    <h2>Shipping Address</h2>
+    <form th:action="@{/shipping/save}" method="post" th:object="${shipping}">
+        <div class="form-columns">
+            <!-- Personal Information -->
+            <div class="form-group">
+                <label for="recipientName">Recipient Name:</label>
+                <input type="text" id="recipientName" th:field="*{recipientName}" placeholder="Enter recipient's name">
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" id="phoneNumber" th:field="*{phoneNumber}" placeholder="Enter phone number">
+            </div>
+        </div>
+
+        <!-- Divider between sections -->
+        <div class="section-divider"></div>
+
+        <!-- Shipping Address Details -->
+        <div class="form-columns">
+            <div class="form-group">
+                <label for="streetAddress">Street Address:</label>
+                <input type="text" id="streetAddress" th:field="*{streetAddress}" placeholder="Enter street address">
+            </div>
+
+            <div class="form-group">
+                <label for="aptSuiteUnit">Apt/Suite/Unit:</label>
+                <input type="text" id="aptSuiteUnit" th:field="*{aptSuiteUnit}" placeholder="Enter apt/suite/unit">
+            </div>
+        </div>
+
+        <div class="form-columns">
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" id="city" th:field="*{city}" placeholder="Enter city">
+            </div>
+
+            <div class="form-group">
+                <label for="stateProvinceRegion">State/Province/Region:</label>
+                <input type="text" id="stateProvinceRegion" th:field="*{stateProvinceRegion}" placeholder="Enter state/province/region">
+            </div>
+        </div>
+
+        <div class="form-columns">
+            <div class="form-group">
+                <label for="postalCode">Postal Code:</label>
+                <input type="text" id="postalCode" th:field="*{postalCode}" placeholder="Enter postal code">
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <input type="text" id="country" th:field="*{country}" placeholder="Enter country">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="specialInstructions">Special Instructions:</label>
+            <textarea id="specialInstructions" rows="3"  th:field="*{specialInstructions}" placeholder="Enter special instructions"></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-submit">Submit</button>
+    </form>
+</div>
+<script>
+      function closeAlert(){
+        var dis = document.getElementById("cls");
+        dis.style.display = dis.style.display === "none"? "": "none";
+      }
+       function toggleProfileDropdown() {
+        var profileDropdown = document.getElementById("profileDropdown");
+        profileDropdown.style.display = profileDropdown.style.display === "none" ? "grid" : "none";
+          }
+          function closePay(){
+            var p = document.getElementById("payment_box");
+            p.style.display = p.style.display === "list-item" ? "none" : "list-item";
+          }
+          function closeDone(){
+            var p = document.getElementById("done_pay");
+            p.style.display = p.style.display === "list-item" ? "none" : "list-item";
+            var p = document.getElementById("payment_box");
+            p.style.display = "none";
+          }
+  </script>
+</body>
+</html>

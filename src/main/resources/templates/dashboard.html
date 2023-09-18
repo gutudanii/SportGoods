@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<!-- Coding by CodingLab | www.codinglabweb.com -->
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!----======== CSS ======== -->
+  <link rel="stylesheet" th:href="@{/css/dash.css}">
+
+  <!----===== Boxicons CSS ===== -->
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Admin Dashboard</title>
+</head>
+<body>
+<nav class="sidebar close">
+  <header>
+    <div class="image-text">
+                <span class="image">
+                    <img th:src="@{/imagee/logo1.png}" alt="">
+                </span>
+
+      <div class="text logo-text">
+        <span class="name">SportsWear</span>
+        <span class="profession">Admin Dashboard</span>
+      </div>
+    </div>
+
+    <i class='bx bx-chevron-right toggle'></i>
+  </header>
+
+  <div class="menu-bar">
+    <div class="menu">
+
+      <li class="search-box">
+        <i class='bx bx-search icon'></i>
+        <input type="text" placeholder="Search...">
+      </li>
+
+      <ul class="menu-links">
+        <li class="nav-link">
+          <a onclick="home()">
+            <i class='bx bx-home-alt icon' ></i>
+            <span class="text nav-text">Dashboard</span>
+          </a>
+        </li>
+
+        <li class="nav-link">
+          <a onclick="notification()">
+            <i class='bx bx-bell icon'></i>
+            <span class="text nav-text">Notifications</span>
+          </a>
+        </li>
+
+        <li class="nav-link">
+          <a  onclick="user()">
+            <i class='bx bx-user icon' ></i>
+            <span class="text nav-text">Users</span>
+          </a>
+        </li>
+
+        <li class="nav-link">
+          <a  onclick="cart()" >
+            <i class='bx bx-cart icon' ></i>
+            <span class="text nav-text">Carts</span>
+          </a>
+        </li>
+
+        <li class="nav-link">
+          <a onclick="Goods()">
+            <i class='bx bx-archive icon' ></i>
+            <span class="text nav-text">Sport Goods</span>
+          </a>
+        </li>
+
+        <li class="nav-link">
+          <a onclick="payment()" >
+            <i class='bx bx-credit-card icon' ></i>
+            <span class="text nav-text">Payments</span>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="bottom-content">
+      <li class="">
+        <a th:href="@{/logout}">
+          <i class='bx bx-log-out icon' ></i>
+          <span class="text nav-text">Logout</span>
+        </a>
+      </li>
+
+      <li class="mode">
+        <div class="sun-moon">
+          <i class='bx bx-moon icon moon'></i>
+          <i class='bx bx-sun icon sun'></i>
+        </div>
+        <span class="mode-text text">Dark mode</span>
+
+        <div class="toggle-switch">
+          <span class="switch"></span>
+        </div>
+      </li>
+
+    </div>
+  </div>
+
+</nav>
+
+<section class="analytics">
+<div id="hm" class="home">
+  <div  class="text">Dashboard Analytic</div>
+    <div class="text">Analytics</div>
+    <div class="main-content">
+      <div class="chart-container">
+        <canvas id="lineChart"></canvas>
+<!--         <canvas id="analytics-chart"></canvas>-->
+      </div>
+      <div class="stats">
+        <div class="stat-item">
+          <div class="stat-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="stat-info">
+            <div th:text=${usr} class="stat-value"></div>
+            <div class="stat-label">Total Users</div>
+          </div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-icon">
+            <i class="fas fa-shopping-cart"></i>
+          </div>
+          <div class="stat-info">
+            <div th:text="${totalSale}" class="stat-value"></div>
+            <div class="stat-label">Total Sales</div>
+          </div>
+        </div>
+        <!-- Add more statistics here -->
+      </div>
+    </div>
+</div>
+</section>
+
+<section style="display:none;" id="ntf" class="home">
+  <div class="text">Notifications</div>
+  <!-- <br> -->
+  <div class="main-content">
+    <div class="notifications">
+      <div th:each="notification : ${notifications}" class="notification-item">
+        <i class="fas fa-envelope"></i>
+        <div class="notification-info">
+          <h3 th:text="${notification.subject}"></h3>
+          <p th:text="${notification.message}"></p>
+          <span th:text="${notification.formattedTimestamp}" class="notification-time"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin: 40px;">.</div>
+</section>
+
+<section style="display:none;"  id="usr" class="home">
+  <div class="text">Users</div>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="users : ${users}">
+      <td th:text="${users.fullName}"></td>
+      <td th:text="${users.username}"></td>
+      <td th:text="${users.emailAddress}"></td>
+      <td th:text="${users.role}"></td>
+      <td>
+        <button class="update-btn"><i class="fas fa-pencil-alt"></i> Update</button>
+        <button class="delete-btn"><i class="fas fa-trash"></i> Delete</button>
+      </td>
+    </tr>
+
+    <!-- Add more rows for other users -->
+    </tbody>
+  </table>
+  <div style="margin: 40px;">.</div>
+</section>
+
+<section style="display:none;" id="crt" class="home">
+  <div class="text">Carts</div>
+  <table class="carts-table">
+    <tr>
+      <th>Cart ID</th>
+      <th>User</th>
+      <th>Total Items</th>
+      <th>Total Price</th>
+      <th>Actions</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>John Doe</td>
+      <td>5</td>
+      <td>ETB 150.00</td>
+      <td class="action-buttons">
+        <a href="#" title="View"><i class="fas fa-eye"></i></a>
+        <a href="#" title="Edit"><i class="fas fa-edit"></i></a>
+        <a href="#" title="Delete"><i class="fas fa-trash"></i></a>
+      </td>
+    </tr>
+    <!-- Add more cart items here -->
+  </table>
+  <div style="margin: 40px;">.</div>
+</section>
+
+<section style="display:none;" id="pyt" class="home">
+  <div class="text">Payments</div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>User ID</th>
+      <th>Status</th>
+      <th>Transaction ID</th>
+      <th>Image</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Add rows for each material (goods) item here -->
+    <tr th:each="pay : ${payment}">
+      <td th:text="${pay.userId}"></td>
+      <td>
+        <span th:if="${pay.approved == false}"><a style="padding: 5px; color:white; text-decoration:none; background-color: orange;" th:href="@{/approve/payment/{id}(id=${pay.id})}">Not Approved</a></span>
+        <span th:if="${pay.approved == true}"><a style="padding: 5px; color:white; text-decoration:none; background-color: darkgreen;"  th:href="@{/notApprove/payment/{id}(id=${pay.id})}">Approved</a></span>
+      </td>
+      <td th:text="${pay.transactionId}"></td>
+      <td>
+        <a th:href="@{/image/payment/{id}(id=${pay.id})}" target="_blank" style="text-decoration:none;"><img width="100" height="100" alt="Image"
+             th:src="@{/image/payment/{id}(id=${pay.id})}">
+        </a>
+      </td>
+      <td>
+        <a href="#" class="btn-update">Update</a>
+        <a href="#" class="btn-delete">Delete</a>
+      </td>
+    </tr>
+    <!-- Add more rows for other material items -->
+    </tbody>
+  </table>
+  <div style="margin: 40px;">.</div>
+</section>
+
+<section style="display:none;" id="gds" class="home">
+  <div  class="text">Materials (Goods)</div>
+  <div style="margin: 20px;"><a onclick="createSport()" class="btn btn-view"><i class="fas fa-plus"></i> Add</a></div>
+  <div id="cntrSprt" style="display:none;" class="container-create">
+    <h2>Create Sport Accessory</h2>
+    <form th:action="@{/sport/create}" th:object="${sportAc}" method="post" enctype="multipart/form-data">
+      <label for="orderName">Material Name:</label>
+      <input type="text" id="orderName" th:field="*{orderName}" required>
+
+      <label for="orderNo">Material Number:</label>
+      <input type="text" id="orderNo" th:field="*{orderNo}" required>
+
+      <label for="orderNo">Material Price:</label>
+      <input type="number" id="orderPrice" th:field="*{orderPrice}" required>
+
+      <label for="orderNo">Material Discount Percent:</label>
+      <input type="number" id="opdPercentage" th:field="*{opdPercentage}" max="100" min="0" >
+
+      <label for="orderNo">Material Discount Price:</label>
+      <input type="number" id="opdPrice" th:field="*{opdPrice}" >
+
+      <label for="orderDetail">Material Detail:</label>
+      <textarea id="orderDetail" th:field="*{orderDetail}" required></textarea>
+
+      <label for="type">Material Type:</label>
+      <select id="type" th:field="*{type}" required>
+        <option value="Featured">Featured</option>
+        <option value="Normal">Normal</option>
+        <option value="Sale">Sale</option>
+      </select>
+
+      <label for="imgLink">Image Link:</label>
+      <input type="text" id="imgLink" th:field="*{imgLink}">
+
+      <label for="img">Image:</label>
+      <input type="file" id="img" name="file" accept="image/*">
+      <button type="submit">Create</button>
+    </form>
+  </div>
+  <table>
+    <tr>
+      <th>Material ID</th>
+      <th>Material Name</th>
+      <th>Material No</th>
+      <th>Material Price</th>
+      <th>Material Dis Percentage</th>
+      <th>Material Dis Price</th>
+      <th>Material Detail</th>
+      <th>Image</th>
+      <th>Actions</th>
+    </tr>
+    <!-- Loop through the list of materials and dynamically populate the table -->
+    <tr th:each="material : ${sportAcc}">
+      <td th:text="${material.sportId}"></td>
+      <td th:text="${material.orderName}"></td>
+      <td th:text="${material.orderNo}"></td>
+      <td th:text="${material.orderPrice}"></td>
+      <td th:text="${material.opdPercentage}"></td>
+      <td th:text="${material.opdPrice}"></td>
+      <td th:text="${material.orderDetail}"></td>
+      <td>
+        <!-- Display the image using Base64 encoding -->
+        <img th:if="${material.image != null}" width="100" height="100" alt="Image"
+             th:src="@{/image/{id}(id=${material.sportId})}">
+        <img th:if="${material.imgLink != null and not #strings.isEmpty(material.imgLink)}" width="100" height="100" th:src="@{${material.imgLink}}" alt="ImgLink">
+      </td>
+      <td>
+        <!-- Buttons for View, Update, and Delete -->
+        <a th:href="@{'/materials/' + ${material.sportId}}" class="btn btn-view"><i class="fas fa-eye"></i> View</a>
+        <a th:href="@{'/materials/' + ${material.sportId} + '/update'}" class="btn btn-update"><i class="fas fa-edit"></i> Update</a>
+        <a th:href="@{'/sport/delete/' + ${material.sportId}}" class="btn btn-delete"><i class="fas fa-trash"></i> Delete</a>
+      </td>
+    </tr>
+  </table>
+  <div style="margin: 40px;">.</div>
+</section>
+
+<script>
+function calculateDiscount() {
+    var perc = parseFloat(document.getElementById("opdPercentage").value);
+    var price = parseFloat(document.getElementById("orderPrice").value);
+
+    if (!isNaN(perc) && !isNaN(price) && perc !== 0) {
+        var val = price - (price * perc) / 100;
+        document.getElementById("opdPrice").value = val;
+    } else {
+        document.getElementById("opdPrice").value = price;
+    }
+}
+document.getElementById("opdPercentage").addEventListener("input", calculateDiscount);
+document.getElementById("orderPrice").addEventListener("input", calculateDiscount);
+
+        function home(){
+            var hm = document.getElementById("hm");
+            var ntf = document.getElementById("ntf");
+            var usr = document.getElementById("usr");
+            var crt = document.getElementById("crt");
+            var pyt = document.getElementById("pyt");
+            var gds = document.getElementById("gds");
+
+            hm.style.display = "";
+            ntf.style.display ="none";
+            usr.style.display ="none";
+            crt.style.display ="none";
+            pyt.style.display ="none";
+            gds.style.display = "none";
+        }
+        function notification(){
+            var hm = document.getElementById("hm");
+            var ntf = document.getElementById("ntf");
+            var usr = document.getElementById("usr");
+            var crt = document.getElementById("crt");
+            var pyt = document.getElementById("pyt");
+            var gds = document.getElementById("gds");
+
+            hm.style.display = "none";
+            ntf.style.display ="";
+            usr.style.display ="none";
+            crt.style.display ="none";
+            pyt.style.display ="none";
+            gds.style.display = "none";
+        }
+        function user(){
+            var hm = document.getElementById("hm");
+            var ntf = document.getElementById("ntf");
+            var usr = document.getElementById("usr");
+            var crt = document.getElementById("crt");
+            var pyt = document.getElementById("pyt");
+            var gds = document.getElementById("gds");
+
+            hm.style.display = "none";
+            ntf.style.display ="none";
+            usr.style.display ="";
+            crt.style.display ="none";
+            pyt.style.display ="none";
+            gds.style.display = "none";
+        }
+        function cart(){
+            var hm = document.getElementById("hm");
+            var ntf = document.getElementById("ntf");
+            var usr = document.getElementById("usr");
+            var crt = document.getElementById("crt");
+            var pyt = document.getElementById("pyt");
+            var gds = document.getElementById("gds");
+
+            hm.style.display = "none";
+            ntf.style.display ="none";
+            usr.style.display ="none";
+            crt.style.display ="";
+            pyt.style.display ="none";
+            gds.style.display = "none";
+        }
+
+        function payment(){
+            var hm = document.getElementById("hm");
+            var ntf = document.getElementById("ntf");
+            var usr = document.getElementById("usr");
+            var crt = document.getElementById("crt");
+            var pyt = document.getElementById("pyt");
+            var gds = document.getElementById("gds");
+
+
+            hm.style.display = "none";
+            ntf.style.display ="none";
+            usr.style.display ="none";
+            crt.style.display ="none";
+            pyt.style.display ="";
+            gds.style.display = "none";
+
+        }
+        function Goods(){
+            var hm = document.getElementById("hm");
+            var ntf = document.getElementById("ntf");
+            var usr = document.getElementById("usr");
+            var crt = document.getElementById("crt");
+            var pyt = document.getElementById("pyt");
+            var gds = document.getElementById("gds");
+
+            hm.style.display = "none";
+            ntf.style.display ="none";
+            usr.style.display ="none";
+            crt.style.display ="none";
+            pyt.style.display ="none";
+            gds.style.display = "";
+        }
+
+        function createSport(){
+            var cntrSprt = document.getElementById("cntrSprt");
+
+            cntrSprt.style.display = cntrSprt.style.display
+            === ""? "none" : "";
+        }
+        const body = document.querySelector('body'),
+      sidebar = body.querySelector('nav'),
+      toggle = body.querySelector(".toggle"),
+      searchBtn = body.querySelector(".search-box"),
+      modeSwitch = body.querySelector(".toggle-switch"),
+      modeText = body.querySelector(".mode-text");
+
+
+toggle.addEventListener("click" , () =>{
+    sidebar.classList.toggle("close");
+})
+
+searchBtn.addEventListener("click" , () =>{
+    sidebar.classList.remove("close");
+})
+
+modeSwitch.addEventListener("click" , () =>{
+    body.classList.toggle("dark");
+
+    if(body.classList.contains("dark")){
+        modeText.innerText = "Light mode";
+    }else{
+        modeText.innerText = "Dark mode";
+
+    }
+});
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Sample data for the chart
+    const data = {
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+      datasets: [{
+        label: "Sales",
+        data: [200, 400, 600, 800, 1000, 1200, 1400],
+        borderColor: "#007bff",
+        backgroundColor: "rgba(0, 123, 255, 0.2)",
+        fill: true
+      }]
+    };
+
+    // Chart configuration
+    const config = {
+      type: "line",
+      data: data,
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    };
+
+    // Create and render the chart
+    const ctx = document.getElementById("lineChart").getContext("2d");
+    new Chart(ctx, config);
+  });
+</script>
+
+</body>
+</html>
