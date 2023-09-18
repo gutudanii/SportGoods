@@ -4,11 +4,13 @@
 
 Welcome to the SportGoods E-Commerce Website repository! This project is an online platform designed to make buying and selling sports equipment a breeze. Whether you're an athlete, sports enthusiast, or simply looking for high-quality sports gear, SportGoods has got you covered.
 
-![Screenshot of SportGoods Website](link_to_screenshot.png)
-![Screenshot of SportGoods Website](link_to_screenshot.png)
-![Screenshot of SportGoods Website](link_to_screenshot.png)
-![Screenshot of SportGoods Website](link_to_screenshot.png)
-![Screenshot of SportGoods Website](link_to_screenshot.png)
+![Screenshot of SportGoods Website](images/image.png)
+![Screenshot of SportGoods Website](images/image1.png)
+![Screenshot of SportGoods Website](images/image2.png)
+![Screenshot of SportGoods Website](images/image3.png)
+![Screenshot of SportGoods Website](images/image4.png)
+![Screenshot of SportGoods Website](images/image5.png)
+![Screenshot of SportGoods Website](images/image6.png)
 
 ## Table of Contents
 
@@ -76,7 +78,7 @@ Thymeleaf has been my choice for the frontend, ensuring a dynamic and interactiv
 
 As an admin, I've also developed a feature-rich dashboard for controlling various aspects of the website, including adding new products, managing user accounts, and more. Here's a sneak peek:
 
-![Screenshot of Admin Dashboard](link_to_admin_dashboard_screenshot.png)
+![Screenshot of SportGoods Website](images/image12.png)
 
 ## Advanced Features
 
@@ -88,6 +90,16 @@ In addition to the core features, I'm working on implementing some advanced func
 ## Testing and Deployment
 
 Testing is crucial to ensure the website's functionality and security. I'll deploy the website on a reliable web server or cloud platform for accessibility.
+
+![Screenshot of SportGoods Website](images/image8.png)
+![Screenshot of SportGoods Website](images/image9.png)
+![Screenshot of SportGoods Website](images/image10.png)
+![Screenshot of SportGoods Website](images/image11.png)
+![Screenshot of SportGoods Website](images/image12.png)
+![Screenshot of SportGoods Website](images/image13.png)
+![Screenshot of SportGoods Website](images/image14.png)
+![Screenshot of SportGoods Website](images/image15.png)
+
 
 ## Contact Information
 
